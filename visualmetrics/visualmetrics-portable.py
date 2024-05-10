@@ -1287,7 +1287,7 @@ def calculate_visual_metrics(
                     )
                     # hero_timings.append({'name': 'FirstPaintedHero',
                     #                     'value': hero_timings_sorted[0]['value']})
-                    if (len(hero_timings_sorted) > 0):
+                    if len(hero_timings_sorted) > 0:
                         hero_timings.append(
                             {
                                 "name": "LastMeaningfulPaint",

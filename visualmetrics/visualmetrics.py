@@ -79,7 +79,7 @@ def video_to_frames(
     timeline_file,
     trim_end,
 ):
-    """ Extract the video frames"""
+    """Extract the video frames"""
     global client_viewport
     first_frame = os.path.join(directory, "ms_000000")
     if (
@@ -111,8 +111,7 @@ def video_to_frames(
                     client_viewport = None
                     if find_viewport and options.notification:
                         client_viewport = find_image_viewport(
-                            os.path.join(directory, "video-000000.png"),
-                            is_mobile
+                            os.path.join(directory, "video-000000.png"), is_mobile
                         )
                     if multiple and orange_file is not None:
                         directories = split_videos(directory, orange_file)
@@ -125,7 +124,9 @@ def video_to_frames(
                             remove_orange_frames(dir, orange_file)
                         find_first_frame(dir, white_file)
                         blank_first_frame(dir)
-                        find_render_start(dir, orange_file, gray_file, cropped, is_mobile)
+                        find_render_start(
+                            dir, orange_file, gray_file, cropped, is_mobile
+                        )
                         find_last_frame(dir, white_file)
                         adjust_frame_times(dir)
                         if timeline_file is not None and not multiple:
@@ -1970,8 +1971,10 @@ def calculate_hero_time(progress, directory, hero, viewport):
                 dir,
                 "hero_{0}_ms_{1:06d}.png".format(hero["name"], progress[n - 1]["time"]),
             )
-            command = "{0} {1} {2} -alpha Off -compose CopyOpacity -composite {3}".format(
-                image_magick["convert"], target_frame, hero_mask, target_mask
+            command = (
+                "{0} {1} {2} -alpha Off -compose CopyOpacity -composite {3}".format(
+                    image_magick["convert"], target_frame, hero_mask, target_mask
+                )
             )
             subprocess.call(command, shell=True)
 
